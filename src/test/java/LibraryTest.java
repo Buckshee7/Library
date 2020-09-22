@@ -1,6 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.HashMap;
+
 import static org.junit.Assert.assertEquals;
 
 public class LibraryTest {
@@ -51,5 +53,12 @@ public class LibraryTest {
         assertEquals(1, this.library.countBooks());
     }
 
+    @Test
+    public void canGetGenreCountHash(){
+        this.library.addBook(this.book);
+        this.library.addBook(this.book2);
+        HashMap genreCount = this.library.getGenreCount();
+        assertEquals(2, genreCount.get("Fantasy"));
+    }
 
 }
