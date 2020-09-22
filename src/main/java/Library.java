@@ -26,4 +26,15 @@ public class Library {
         }
         return false;
     }
+
+    public boolean hasBook(Book book){
+        return this.catalogue.contains(book);
+    }
+
+    public boolean removeBook(Book book){
+        if (this.hasBook(book)){
+            return this.catalogue.remove(book);
+        }
+        return false;
+    }
 }

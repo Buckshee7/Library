@@ -7,11 +7,13 @@ public class LibraryTest {
 
     private Library library;
     private Book book;
+    private Book book2;
 
     @Before
     public void before(){
         this.library = new Library(3);
-        this.book = new Book("Harry Potter", "J.K.Rowling", "Fantasy");
+        this.book = new Book("Lies of Locke Lamora", "Scott Lynch", "Fantasy");
+        this.book2 = new Book("The Name of the Wind", "Patrick Rothfuss", "Fantasy");
     }
 
     @Test
@@ -33,6 +35,20 @@ public class LibraryTest {
         this.library.addBook(this.book);
         this.library.addBook(this.book);
         assertEquals(3, this.library.countBooks());
+    }
+
+    @Test
+    public void canRemoveBookWhenExists(){
+        this.library.addBook(this.book);
+        this.library.removeBook(this.book);
+        assertEquals(0, this.library.countBooks());
+    }
+
+    @Test
+    public void cantRemoveBookWhenNotExists(){
+        this.library.addBook(this.book);
+        this.library.removeBook(this.book2);
+        assertEquals(1, this.library.countBooks());
     }
 
 
